@@ -9,6 +9,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "styled-components": "^5.2.3",
     "web-vitals": "^1.1.1"
   },
   "devDependencies": {
@@ -16,6 +17,7 @@
     "@types/node": "^12.20.7",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
+    "@types/styled-components": "^5.1.9",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "prettier": "^2.2.1",
@@ -57,12 +59,20 @@
   },
   "prettier": {
     "useTabs": true,
-    "printWidth": 80,
+    "printWidth": 100,
     "tabWidth": 2,
     "singleQuote": false,
     "trailingComma": "es5",
     "jsxBracketSameLine": false,
     "parser": "babel-ts",
-    "semi": true
+    "semi": true,
+    "overrides": [
+      {
+        "files": "*.css",
+        "options": {
+          "parser": "css"
+        }
+      }
+    ]
   }
 }
