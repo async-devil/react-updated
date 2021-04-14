@@ -1,25 +1,41 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import ExpenseGroup from "./components/ExpenseItem/ExpenseGroup";
+
+const expenseList = [
+	{
+		title: "First expense",
+		price: 10.8,
+		paymentMethod: "Cash",
+		category: "Transport",
+		date: new Date(2021, 3, 20),
+		id: "01",
+	},
+	{
+		title: "First expense",
+		price: 29.2,
+		paymentMethod: "Cash",
+		category: "Groceries",
+		date: new Date(2021, 3, 20),
+		id: "02",
+	},
+	{
+		title: "First expense",
+		price: 1.07,
+		paymentMethod: "Cash",
+		category: "Shopping",
+		date: new Date(2021, 3, 20),
+		id: "03",
+	},
+];
 
 function App() {
 	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.tsx</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-			</header>
-		</div>
+		<main>
+			<h1>It works!</h1>
+			<ExpenseGroup date={new Date(2021, 3, 16)} expenses={expenseList}></ExpenseGroup>
+			<ExpenseGroup date={new Date(2021, 3, 15)} expenses={expenseList}></ExpenseGroup>
+			<ExpenseGroup date={new Date(2021, 3, 14)} expenses={expenseList}></ExpenseGroup>
+		</main>
 	);
 }
 
