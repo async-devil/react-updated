@@ -87,9 +87,7 @@ export const ExpensePrice = styled.div`
 
 export const ExpenseGroupArticle = styled.article`
 	min-width: 17.5rem;
-	max-width: 30rem;
-
-	box-shadow: 0 2px 1px -2px black;
+	max-width: 48rem;
 
 	.expense-item:last-child {
 		border: none;
