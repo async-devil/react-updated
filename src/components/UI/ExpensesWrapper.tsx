@@ -2,21 +2,26 @@ import styled from "styled-components";
 import { ReactNode } from "react";
 
 const StyledWrapper = styled.div`
-	margin: 0 auto 0 auto;
+	margin: 0 auto 3.125rem auto;
+	padding: 0.25rem;
 	max-width: 1200px;
 
 	display: grid;
 	justify-items: stretch;
 	align-items: center;
-	padding: 0.25rem;
+
+	.expense-group {
+		margin-bottom: 0.5rem;
+	}
+
+	.expense-group:last-child {
+		margin-bottom: 0;
+	}
 
 	grid-template-columns: repeat(1, minmax(0, 1fr));
 
 	@media (min-width: 768px) {
 		padding: 0;
-		.expense-group {
-			padding: 0.25rem;
-		}
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
