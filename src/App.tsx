@@ -1,5 +1,14 @@
 import React from "react";
 import ExpenseGroup from "./components/ExpenseItem/ExpenseGroup";
+import Wrapper from "./components/UI/ExpensesWrapper";
+import Footer from "./components/UI/Footer";
+
+enum Pages {
+	Accounts = 1,
+	Categories = 2,
+	Transactions = 3,
+	Overview = 4,
+}
 
 const expenseList = [
 	{
@@ -30,12 +39,46 @@ const expenseList = [
 
 function App() {
 	return (
-		<main>
-			<h1>It works!</h1>
-			<ExpenseGroup date={new Date(2021, 3, 16)} expenses={expenseList}></ExpenseGroup>
-			<ExpenseGroup date={new Date(2021, 3, 15)} expenses={expenseList}></ExpenseGroup>
-			<ExpenseGroup date={new Date(2021, 3, 14)} expenses={expenseList}></ExpenseGroup>
-		</main>
+		<div id="page">
+			<main>
+				<Wrapper>
+					<ExpenseGroup date={new Date(Date.now())} expenses={expenseList}></ExpenseGroup>
+					<ExpenseGroup
+						date={new Date(Date.now() - 24 * 60 * 60 * 1000)}
+						expenses={expenseList}
+					></ExpenseGroup>
+					<ExpenseGroup
+						date={new Date(Date.now() - 2 * 24 * 60 * 60 * 1000)}
+						expenses={expenseList}
+					></ExpenseGroup>
+					<ExpenseGroup
+						date={new Date(Date.now() - 3 * 24 * 60 * 60 * 1000)}
+						expenses={expenseList}
+					></ExpenseGroup>
+					<ExpenseGroup
+						date={new Date(Date.now() - 4 * 24 * 60 * 60 * 1000)}
+						expenses={expenseList}
+					></ExpenseGroup>
+					<ExpenseGroup
+						date={new Date(Date.now() - 5 * 24 * 60 * 60 * 1000)}
+						expenses={expenseList}
+					></ExpenseGroup>
+					<ExpenseGroup
+						date={new Date(Date.now() - 6 * 24 * 60 * 60 * 1000)}
+						expenses={expenseList}
+					></ExpenseGroup>
+					<ExpenseGroup
+						date={new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)}
+						expenses={expenseList}
+					></ExpenseGroup>
+					<ExpenseGroup
+						date={new Date(Date.now() - 8 * 24 * 60 * 60 * 1000)}
+						expenses={expenseList}
+					></ExpenseGroup>
+				</Wrapper>
+			</main>
+			<Footer activePageIndex={Pages.Transactions}></Footer>
+		</div>
 	);
 }
 
