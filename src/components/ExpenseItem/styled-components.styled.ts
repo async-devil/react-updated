@@ -41,6 +41,8 @@ export const DateValue = styled.span<{ textDay?: boolean }>`
 // Expense Item part
 
 export const ExpenseItemArticle = styled.div`
+	cursor: pointer;
+
 	color: white;
 	border-bottom: 0.08rem solid #444444;
 `;
@@ -51,6 +53,10 @@ export const ExpenseItemDescription = styled.div`
 
 	background-color: #363636;
 	padding: 0.25rem 0.5rem;
+
+	&:hover {
+		background-color: #2e2e2e;
+	}
 `;
 
 export const ExpenseInfo = styled.div`
@@ -92,5 +98,23 @@ export const ExpenseGroupArticle = styled.article`
 	.expense-item:last-child {
 		border: none;
 		box-shadow: 0 2px 1px -2px black;
+	}
+
+	&:hover {
+		box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+	}
+
+	@media (min-width: 768px) {
+		margin: 0.25rem;
+		&:hover {
+			transform: scale(1.02);
+		}
+	}
+
+	@media (min-width: 1200px) {
+		&:hover {
+			transform: scale(1.1);
+			box-shadow: 0 70px 70px -12px rgba(0, 0, 0, 0.25);
+		}
 	}
 `;
