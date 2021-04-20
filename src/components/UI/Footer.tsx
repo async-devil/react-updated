@@ -3,10 +3,11 @@ import CreditCardIcon from "@material-ui/icons/CreditCard";
 import DataUsageIcon from "@material-ui/icons/DataUsage";
 import ReceiptIcon from "@material-ui/icons/Receipt";
 import BarChartIcon from "@material-ui/icons/BarChart";
+import { ThemeType } from "../../Theme/Theme";
 
-const StyledFooter = styled.footer`
+const StyledFooter = styled.footer<{ theme: ThemeType }>`
 	width: 100%;
-	height: 3.125rem;
+	height: ${(props) => props.theme.height.footer};
 
 	position: fixed;
 	left: 0;
@@ -16,7 +17,7 @@ const StyledFooter = styled.footer`
 	align-content: center;
 
 	opacity: 0.95;
-	background-color: #444;
+	background-color: ${(props) => props.theme.colors.background.default};
 `;
 
 const FooterWrapper = styled.div`
@@ -30,7 +31,7 @@ const FooterWrapper = styled.div`
 	align-items: center;
 `;
 
-const Button = styled.div<{ active?: boolean }>`
+const Button = styled.div<{ active?: boolean; theme: ThemeType }>`
 	cursor: pointer;
 	display: inline-block;
 
@@ -39,17 +40,17 @@ const Button = styled.div<{ active?: boolean }>`
 
 	padding: 0.25rem 1rem 0.25rem 1rem;
 
-	color: #a7a7a7;
+	color: ${(props) => props.theme.colors.text.secondary};
 
 	${(props) =>
 		props.active &&
 		css`
-			color: #fff;
+			color: ${(props) => props.theme.colors.text.primary};
 			opacity: 1;
 		`}
 
 	&:hover {
-		color: #fff;
+		color: ${(props) => props.theme.colors.text.primary};
 		opacity: 1;
 	}
 
@@ -70,9 +71,6 @@ const Button = styled.div<{ active?: boolean }>`
 		.footer__button_title {
 			display: none;
 		}
-	}
-
-	@media (max-width: 325px) {
 	}
 `;
 
