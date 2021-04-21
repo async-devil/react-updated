@@ -112,6 +112,10 @@ class Wallet {
 
 		return balance;
 	}
+
+	get balances() {
+		return [...this.balanceList];
+	}
 }
 
 export default Wallet;
