@@ -9,7 +9,8 @@ export const TransactionItemDate = styled.time<{ theme: ThemeType }>`
 	background-color: ${(props) => props.theme.colors.background.menu};
 	color: ${(props) => props.theme.colors.text.primary};
 
-	display: block;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 
 	text-align: start;
 	padding: 0.25rem 0.5rem;
@@ -38,6 +39,20 @@ export const DateValue = styled.span<{ textDay?: boolean; theme: ThemeType }>`
 		`}
 `;
 
+export const DateSum = styled.div<{ theme: ThemeType; isPositive: boolean }>`
+	color: ${(props) => props.theme.colors.text.expense};
+	font-size: ${(props) => props.theme.fontSizes.preLarge};
+
+	${(props) =>
+		props.isPositive &&
+		css`
+			color: ${(props) => props.theme.colors.text.income};
+		`}
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: flex-end;
+`;
 /*------------------------------------------------------------------------------------------*/
 // Transaction Item part
 
