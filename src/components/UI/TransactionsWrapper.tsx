@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { ReactNode } from "react";
+import { ThemeType } from "../../Theme/Theme";
 
-const StyledWrapper = styled.div`
-	margin: 0 auto 3.125rem auto;
+const StyledWrapper = styled.div<{ theme: ThemeType }>`
+	margin: ${(props) => props.theme.height.header} auto ${(props) => props.theme.height.footer} auto;
 	padding: 0.25rem;
 	max-width: 1200px;
 
@@ -10,18 +11,13 @@ const StyledWrapper = styled.div`
 	justify-items: stretch;
 	align-items: center;
 
-	.expense-group {
-		margin-bottom: 0.5rem;
-	}
-
-	.expense-group:last-child {
-		margin-bottom: 0;
+	.transaction-group {
+		margin: 0 0.25rem 0.5rem 0.25rem;
 	}
 
 	grid-template-columns: repeat(1, minmax(0, 1fr));
 
 	@media (min-width: 768px) {
-		padding: 0;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
