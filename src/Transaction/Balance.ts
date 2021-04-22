@@ -24,7 +24,7 @@ class Balance {
 		return this.balanceType.toString();
 	}
 
-	get ammount() {
+	get amount() {
 		return this.balance;
 	}
 }

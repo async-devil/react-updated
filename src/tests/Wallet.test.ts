@@ -51,7 +51,7 @@ test("Should get valid account ammount", () => {
 		date: "2011-10-10",
 		id: "1",
 	});
-	expect(wallet.getBalanceByType("Cash").ammount).toBe(-100);
+	expect(wallet.getBalanceByType("Cash").amount).toBe(-100);
 });
 
 test("Should successfully delete transaction", () => {
@@ -94,7 +94,7 @@ test("Should successfully update transaction", () => {
 		id: "1",
 	});
 
-	expect(wallet.getBalanceByType("Cash").ammount).toBe(-10);
+	expect(wallet.getBalanceByType("Cash").amount).toBe(-10);
 	expect(wallet.transactionsList[0]).toStrictEqual(
 		new Transaction({
 			title: "Test",

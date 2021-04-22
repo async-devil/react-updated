@@ -1,6 +1,7 @@
 import Balance from "./Balance";
 import PaymentMethod, { PaymentMethods } from "./Categories/PaymentMethod";
 import Transaction, { TransactionDetails, TransactionDetailsUnparsed } from "./Transaction";
+import currency from "currency.js";
 
 class Wallet {
 	private transactions: Transaction[] = [];
@@ -115,6 +116,12 @@ class Wallet {
 
 	get balances() {
 		return [...this.balanceList];
+	}
+
+	get balanceSum() {
+		let sum = currency(0);
+		this.balances.forEach((balance) => (sum = sum.add(balance.amount)));
+		return sum.value;
 	}
 }
 
