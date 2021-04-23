@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { ThemeType } from "../../Theme/Theme";
-import Balance from "../../Transaction/Balance";
+import Wallet from "../../Transaction/Wallet";
 
 const StyledHeader = styled.header<{ theme: ThemeType; isCurrent: boolean }>`
 	width: 100%;
@@ -41,19 +41,14 @@ const BalanceInfo = styled.div``;
 
 const UtilityButton = styled.div``;
 
-const Header = ({ balances, isCurrent }: { balances: Balance[]; isCurrent: boolean }) => {
+const Header = ({ wallet, isCurrent }: { wallet: Wallet; isCurrent: boolean }) => {
 	return (
 		<StyledHeader isCurrent={isCurrent}>
 			<HeaderBalanceWrapper>
 				<Menu>Menu</Menu>
 				<BalanceInfo>
-					{(() => {
-						let ammount = 0;
-						balances.forEach((balance) => {
-							ammount += balance.ammount;
-						});
-						return ammount;
-					})()}
+					{wallet.balanceSum.toString()[0] === "-" ? "- " : "+ "}
+					{wallet.balanceSum.toString().replace("-", "")}$
 				</BalanceInfo>
 				<UtilityButton>Button</UtilityButton>
 			</HeaderBalanceWrapper>
