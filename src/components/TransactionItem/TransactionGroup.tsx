@@ -4,18 +4,37 @@ import TransactionItem from "./TransactionItem";
 import { TransactionGroupArticle } from "./styled-components.styled";
 import currency from "currency.js";
 
-const TransactionGroup = ({ date, transactions }: { date: Date; transactions: Transaction[] }) => {
+const TransactionGroup = (props: {
+	date: Date;
+	transactions: Transaction[];
+	deleteTransaction: (id: string) => void;
+	transactionController: {
+		controllerState: {
+			open: boolean;
+			id: string;
+		};
+		open: (id: string) => void;
+		close: () => void;
+		changeTitleHandler: (eventValue: string, id: string) => void;
+		changeAmountHandler: (eventValue: string, id: string) => void;
+	};
+}) => {
 	let transactionsArray = null;
 
-	transactionsArray = [...transactions].map((transaction, index) => {
+	transactionsArray = [...props.transactions].map((transaction, index) => {
 		return (
-			<TransactionItem transaction={transaction} key={transaction.details.id}></TransactionItem>
+			<TransactionItem
+				transaction={transaction}
+				key={transaction.details.id}
+				deleteTransaction={props.deleteTransaction}
+				transactionController={props.transactionController}
+			></TransactionItem>
 		);
 	});
 
 	const sum = () => {
 		let sum = 0;
-		transactions.forEach((transaction) => {
+		props.transactions.forEach((transaction) => {
 			if (transaction.details.type === "Income")
 				return (sum = currency(sum).add(transaction.details.amount).value);
 			if (transaction.details.type === "Expense")
@@ -26,7 +45,7 @@ const TransactionGroup = ({ date, transactions }: { date: Date; transactions: Tr
 
 	return (
 		<TransactionGroupArticle className="transaction-group">
-			{transactionsArray ? <TransactionDate date={date} sum={sum()}></TransactionDate> : null}
+			{transactionsArray ? <TransactionDate date={props.date} sum={sum()}></TransactionDate> : null}
 			{transactionsArray}
 		</TransactionGroupArticle>
 	);

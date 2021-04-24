@@ -57,13 +57,12 @@ export const DateSum = styled.div<{ theme: ThemeType; isPositive: boolean }>`
 // Transaction Item part
 
 export const TransactionItemArticle = styled.div<{ theme: ThemeType }>`
-	cursor: pointer;
-
 	color: white;
 	border-bottom: 0.08rem solid ${(props) => props.theme.colors.divider};
 `;
 
 export const TransactionItemDescription = styled.div<{ theme: ThemeType }>`
+	cursor: pointer;
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 

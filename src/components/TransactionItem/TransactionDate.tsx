@@ -5,6 +5,7 @@ import {
 	DateValue,
 	DateSum,
 } from "./styled-components.styled";
+import currency from "currency.js";
 
 const TransactionDate = ({ date, sum }: { date: Date; sum: number }) => {
 	const year = date.getFullYear();
@@ -24,8 +25,8 @@ const TransactionDate = ({ date, sum }: { date: Date; sum: number }) => {
 				</DateWrapper>
 			</div>
 			<DateSum isPositive={sum >= 0}>
-				{sum.toString()[0] === "-" ? "- " : "+ "}
-				{sum.toString().replace("-", "")}$
+				{currency(sum).value.toString()[0] === "-" ? "- " : "+ "}
+				{currency(sum).value.toString().replace("-", "")}$
 			</DateSum>
 		</TransactionItemDate>
 	);

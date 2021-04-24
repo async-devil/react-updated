@@ -7,11 +7,30 @@ import {
 	TransactionCategoryValue,
 	TransactionAmmount,
 } from "./styled-components.styled";
+import TransactionController from "./TransactionController";
 
-const TransactionItem = (props: { transaction: Transaction }) => {
+const TransactionItem = (props: {
+	transaction: Transaction;
+	deleteTransaction: (id: string) => void;
+	transactionController: {
+		controllerState: {
+			open: boolean;
+			id: string;
+		};
+		open: (id: string) => void;
+		close: () => void;
+		changeTitleHandler: (eventValue: string, id: string) => void;
+		changeAmountHandler: (eventValue: string, id: string) => void;
+	};
+}) => {
 	return (
 		<TransactionItemArticle className="transaction-item">
-			<TransactionItemDescription className="transaction-item__description">
+			<TransactionItemDescription
+				className="transaction-item__description"
+				onClick={() => {
+					props.transactionController.open(props.transaction.details.id);
+				}}
+			>
 				<TransactionInfo>
 					<props.transaction.details.category.ico
 						style={{
@@ -40,6 +59,15 @@ const TransactionItem = (props: { transaction: Transaction }) => {
 					</p>
 				</TransactionAmmount>
 			</TransactionItemDescription>
+			{props.transactionController.controllerState.open &&
+				props.transactionController.controllerState.id === props.transaction.details.id && (
+					<TransactionController
+						transaction={props.transaction}
+						close={props.transactionController.close}
+						changeTitleHandler={props.transactionController.changeTitleHandler}
+						changeAmountHandler={props.transactionController.changeAmountHandler}
+					/>
+				)}
 		</TransactionItemArticle>
 	);
 };
