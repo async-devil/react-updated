@@ -103,6 +103,12 @@ class Wallet {
 		return updateTransaction;
 	}
 
+	getTransactionByID(id: string): Transaction {
+		const transaction = this.transactions.find((transaction) => transaction.details.id === id);
+		if (!transaction) throw new Error("Transaction not found");
+		return transaction;
+	}
+
 	get transactionsList() {
 		return [...this.transactions];
 	}
