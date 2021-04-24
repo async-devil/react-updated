@@ -77,22 +77,22 @@ const Button = styled.div<{ active?: boolean; theme: ThemeType }>`
 const Footer = ({ activePageIndex }: { activePageIndex: number }) => {
 	return (
 		<StyledFooter>
-			<FooterWrapper>
-				<Button className="footer__button" active={activePageIndex === 1 ? true : false}>
+			<FooterWrapper className="footer-wrapper">
+				<Button className="footer-wrapper__button" active={activePageIndex === 1 ? true : false}>
 					<CreditCardIcon className="footer__button_icon"></CreditCardIcon>
-					<span className="footer__button_title">Accounts</span>
+					<span className="footer-wrapper__button_title">Accounts</span>
 				</Button>
-				<Button className="footer__button" active={activePageIndex === 2 ? true : false}>
+				<Button className="footer-wrapper__button" active={activePageIndex === 2 ? true : false}>
 					<DataUsageIcon className="footer__button_icon"></DataUsageIcon>
 					<span className="footer__button_title">Categories</span>
 				</Button>
-				<Button className="footer__button" active={activePageIndex === 3 ? true : false}>
+				<Button className="footer-wrapper__button" active={activePageIndex === 3 ? true : false}>
 					<ReceiptIcon className="footer__button_icon"></ReceiptIcon>
 					<span className="footer__button_title">Transactions</span>
 				</Button>
-				<Button className="footer__button" active={activePageIndex === 4 ? true : false}>
+				<Button className="footer-wrapper__button" active={activePageIndex === 4 ? true : false}>
 					<BarChartIcon className="footer__button_icon"></BarChartIcon>
-					<span className="footer__button_title">Overview</span>
+					<span className="footer-wrapper__button_title">Overview</span>
 				</Button>
 			</FooterWrapper>
 		</StyledFooter>

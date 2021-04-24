@@ -44,13 +44,13 @@ const UtilityButton = styled.div``;
 const Header = ({ wallet, isCurrent }: { wallet: Wallet; isCurrent: boolean }) => {
 	return (
 		<StyledHeader isCurrent={isCurrent}>
-			<HeaderBalanceWrapper>
-				<Menu>Menu</Menu>
-				<BalanceInfo>
+			<HeaderBalanceWrapper className="header-wrapper">
+				<Menu className="header-wrapper_menu">Menu</Menu>
+				<BalanceInfo className="header-wrapper_balance-info">
 					{wallet.balanceSum.toString()[0] === "-" ? "- " : "+ "}
 					{wallet.balanceSum.toString().replace("-", "")}$
 				</BalanceInfo>
-				<UtilityButton>Button</UtilityButton>
+				<UtilityButton className="header-wrapper_utility-button">Button</UtilityButton>
 			</HeaderBalanceWrapper>
 		</StyledHeader>
 	);
