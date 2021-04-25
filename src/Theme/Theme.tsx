@@ -27,6 +27,7 @@ export type ThemeType = {
 			default: string;
 			paper: string;
 			menu: string;
+			menuHighlighted: string;
 		};
 		divider: string;
 	};

@@ -4,8 +4,8 @@ const darkTheme = {
 	colors: {
 		text: {
 			primary: "#fff",
-			secondary: "rgb(211, 211, 211)",
-			special: "rgb(220, 220, 220)",
+			secondary: "#aaa",
+			special: "#bfbfbf",
 			expense: "rgb(255, 99, 71)",
 			income: "rgb(124, 252, 0)",
 		},
@@ -16,6 +16,7 @@ const darkTheme = {
 			default: "#444",
 			paper: "#363636",
 			menu: "#262626",
+			menuHighlighted: "#3a3a3a",
 		},
 		divider: "#444",
 	},

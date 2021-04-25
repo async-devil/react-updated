@@ -4,7 +4,7 @@ import { ThemeType } from "../../../Theme/Theme";
 export const TransactionItemDate = styled.time<{ theme: ThemeType }>`
 	height: auto;
 	background-color: ${(props) => props.theme.colors.background.menu};
-	color: ${(props) => props.theme.colors.text.primary};
+	color: ${(props) => props.theme.colors.text.special};
 
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -28,6 +28,7 @@ export const DateWrapper = styled.div`
 export const DateValue = styled.span<{ textDay?: boolean; theme: ThemeType }>`
 	display: block;
 	font-size: ${(props) => props.theme.fontSizes.title};
+	color: ${(props) => props.theme.colors.text.primary};
 
 	${(props) =>
 		props.textDay &&
