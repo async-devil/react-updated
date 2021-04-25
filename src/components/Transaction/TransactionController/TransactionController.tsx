@@ -73,7 +73,7 @@ const TransactionController = (props: {
 							value={amountHandlerValue}
 							onChange={(event) =>
 								updateAmountHandlerValue(
-									event.target.value.replace(/([^\d.,])|((?<=\.\d{2}).)|((?<=\..*)\.)/gm, "")
+									event.target.value.replace(/([^\d.])|((?<=\.\d{2}).)|((?<=\..*)\.)/gm, "")
 								)
 							}
 						/>

@@ -53,7 +53,7 @@ const App = () => {
 	const changeAmountHandler = (eventValue: string, id: string) => {
 		const transaction = wallet.getTransactionByID(id);
 
-		const amount = eventValue.replace(/([^\d.,])|((?<=\.\d{2}).)|((?<=\..*)\.)/gm, "");
+		const amount = eventValue.replace(/([^\d.])|((?<=\.\d{2}).)|((?<=\..*)\.)/gm, "");
 
 		wallet.updateTransactionByID(
 			transaction.details.id,
