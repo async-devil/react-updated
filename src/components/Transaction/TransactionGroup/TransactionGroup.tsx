@@ -1,8 +1,22 @@
-import Transaction from "../../Transaction/Transaction";
-import TransactionDate from "./TransactionDate";
-import TransactionItem from "./TransactionItem";
-import { TransactionGroupArticle } from "./styled-components.styled";
+import Transaction from "../../../Transaction/Transaction";
+import TransactionDate from "../TransactionDate/TransactionDate";
+import TransactionItem from "../TransactionItem/TransactionItem";
 import currency from "currency.js";
+import styled from "styled-components";
+
+const TransactionGroupArticle = styled.article`
+	min-width: 17.5rem;
+	max-width: 48rem;
+
+	.transaction-item:last-child {
+		border: none;
+		box-shadow: 0 2px 1px -2px black;
+	}
+
+	&:hover {
+		box-shadow: 0 10px 25px -12px rgba(0, 0, 0, 0.25);
+	}
+`;
 
 const TransactionGroup = (props: {
 	date: Date;

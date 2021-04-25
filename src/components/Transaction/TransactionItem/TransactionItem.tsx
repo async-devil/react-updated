@@ -1,4 +1,5 @@
-import Transaction from "../../Transaction/Transaction";
+import Transaction from "../../../Transaction/Transaction";
+import TransactionController from "../TransactionController/TransactionController";
 import {
 	TransactionItemArticle,
 	TransactionItemDescription,
@@ -6,8 +7,7 @@ import {
 	TransactionCategory,
 	TransactionCategoryValue,
 	TransactionAmmount,
-} from "./styled-components.styled";
-import TransactionController from "./TransactionController";
+} from "./TransactionItem.styles";
 
 const TransactionItem = (props: {
 	transaction: Transaction;

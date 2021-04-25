@@ -1,4 +1,4 @@
-import Transaction from "../../Transaction/Transaction";
+import Transaction from "../Transaction";
 
 export type SortedTransactions = {
 	[ISODate: string]: Transaction[];

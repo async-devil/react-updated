@@ -1,11 +1,11 @@
+import currency from "currency.js";
 import {
 	TransactionItemDate,
 	DayNumber,
 	DateWrapper,
 	DateValue,
 	DateSum,
-} from "./styled-components.styled";
-import currency from "currency.js";
+} from "./TransactionDate.styles";
 
 const TransactionDate = ({ date, sum }: { date: Date; sum: number }) => {
 	const year = date.getFullYear();
