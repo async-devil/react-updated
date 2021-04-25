@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from "react";
-import TransactionGroup from "./components/TransactionItem/TransactionGroup";
+import { Fragment, useState } from "react";
+import TransactionGroup from "./components/Transaction/TransactionGroup/TransactionGroup";
 import Wrapper from "./components/UI/TransactionsWrapper";
 import Footer from "./components/UI/Footer";
 import Wallet from "./Transaction/Wallet";
@@ -7,7 +7,7 @@ import Wallet from "./Transaction/Wallet";
 import Theme from "./Theme/Theme";
 import darkTheme from "./Theme/darkTheme";
 import { createGlobalStyle } from "styled-components";
-import transactionsSort from "./components/TransactionItem/transactionsSort";
+import transactionsSort from "./Transaction/utils/transactionsSort";
 import Transaction from "./Transaction/Transaction";
 import Header from "./components/UI/Header";
 import { transactionList } from "./transactions";
