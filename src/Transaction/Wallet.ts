@@ -20,7 +20,7 @@ class Wallet {
 
 	private findRelativeBalance(transaction: Transaction): Balance {
 		const balance = this.balanceList.find(
-			(balance) => balance.type === transaction.details.paymentMethod.toString()
+			(balance) => balance.type.name === transaction.details.paymentMethod.toString()
 		);
 
 		if (!balance) throw new Error("Balance not found");
@@ -114,7 +114,7 @@ class Wallet {
 	}
 
 	getBalanceByType(type: string) {
-		const balance = this.balanceList.find((balance) => balance.type === type);
+		const balance = this.balanceList.find((balance) => balance.type.name === type);
 		if (!balance) throw new Error("Balance not found");
 
 		return balance;

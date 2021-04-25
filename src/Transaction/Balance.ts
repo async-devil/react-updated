@@ -20,12 +20,16 @@ class Balance {
 		this.balance = updatedBalance;
 	}
 
-	get type() {
+	toString() {
 		return this.balanceType.toString();
 	}
 
 	get amount() {
 		return this.balance;
+	}
+
+	get type() {
+		return this.balanceType;
 	}
 }
 

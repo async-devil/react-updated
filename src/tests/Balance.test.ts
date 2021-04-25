@@ -3,7 +3,7 @@ import { PaymentMethods } from "../Transaction/Categories/PaymentMethod";
 
 test("Should get valid type", () => {
 	const balance = new Balance(PaymentMethods["Cash"]);
-	expect(balance.type).toBe("Cash");
+	expect(balance.type.name).toBe("Cash");
 });
 
 test("Should get valid balance", () => {
