@@ -21,6 +21,7 @@ const TransactionItem = (props: {
 		close: () => void;
 		changeTitleHandler: (eventValue: string, id: string) => void;
 		changeAmountHandler: (eventValue: string, id: string) => void;
+		changeDateHandler: (eventValue: Date, id: string) => void;
 	};
 }) => {
 	return (
@@ -64,8 +65,10 @@ const TransactionItem = (props: {
 					<TransactionController
 						transaction={props.transaction}
 						close={props.transactionController.close}
+						deleteTransaction={props.deleteTransaction}
 						changeTitleHandler={props.transactionController.changeTitleHandler}
 						changeAmountHandler={props.transactionController.changeAmountHandler}
+						changeDateHandler={props.transactionController.changeDateHandler}
 					/>
 				)}
 		</TransactionItemArticle>

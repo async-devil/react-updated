@@ -9,7 +9,7 @@ import darkTheme from "./Theme/darkTheme";
 import { createGlobalStyle } from "styled-components";
 import transactionsSort from "./Transaction/utils/transactionsSort";
 import Transaction from "./Transaction/Transaction";
-import Header from "./components/UI/Header";
+import Header from "./components/UI/Header/Header";
 import { transactionList } from "./transactions";
 import currency from "currency.js";
 
@@ -58,6 +58,17 @@ const App = () => {
 		wallet.updateTransactionByID(
 			transaction.details.id,
 			Object.assign(transaction.details, { amount: currency(amount).value })
+		);
+
+		setTransactions(wallet.transactionsList);
+	};
+
+	const changeDateHandler = (eventValue: Date, id: string) => {
+		const transaction = wallet.getTransactionByID(id);
+
+		wallet.updateTransactionByID(
+			transaction.details.id,
+			Object.assign(transaction.details, { date: eventValue })
 		);
 
 		setTransactions(wallet.transactionsList);
@@ -113,6 +124,7 @@ const App = () => {
 										close: closeController,
 										changeTitleHandler,
 										changeAmountHandler,
+										changeDateHandler,
 									}}
 								></TransactionGroup>
 							);

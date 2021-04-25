@@ -31,11 +31,12 @@ const TransactionGroup = (props: {
 		close: () => void;
 		changeTitleHandler: (eventValue: string, id: string) => void;
 		changeAmountHandler: (eventValue: string, id: string) => void;
+		changeDateHandler: (eventValue: Date, id: string) => void;
 	};
 }) => {
 	let transactionsArray = null;
 
-	transactionsArray = [...props.transactions].map((transaction, index) => {
+	transactionsArray = [...props.transactions].map((transaction) => {
 		return (
 			<TransactionItem
 				transaction={transaction}
