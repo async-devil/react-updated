@@ -129,6 +129,18 @@ class Wallet {
 		this.balances.forEach((balance) => (sum = sum.add(balance.amount)));
 		return sum.value;
 	}
+
+	getAmountByTransactionCategoryName(category: string): number {
+		const transactions = this.transactions.filter(
+			(transaction) => transaction.details.category.name === category
+		);
+		if (transactions.length === 0) throw new Error("Transactions not found");
+
+		let sum = currency(0);
+		transactions.forEach((transaction) => sum.add(transaction.details.amount));
+
+		return sum.value;
+	}
 }
 
 export default Wallet;
