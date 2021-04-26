@@ -137,7 +137,7 @@ class Wallet {
 		if (transactions.length === 0) throw new Error("Transactions not found");
 
 		let sum = currency(0);
-		transactions.forEach((transaction) => sum.add(transaction.details.amount));
+		transactions.forEach((transaction) => (sum = sum.add(transaction.details.amount)));
 
 		return sum.value;
 	}
