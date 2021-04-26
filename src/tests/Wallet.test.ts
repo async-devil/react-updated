@@ -107,3 +107,29 @@ test("Should successfully update transaction", () => {
 		})
 	);
 });
+
+test("Should successfully get transactions amount by category", () => {
+	const wallet = new Wallet();
+	const transaction = {
+		title: "Test",
+		amount: 100,
+		paymentMethod: "Cash",
+		type: "Expense",
+		category: "Groceries",
+		date: "2011-10-10",
+		id: "1",
+	};
+	const transaction2 = {
+		title: "Test",
+		amount: 100,
+		paymentMethod: "Cash",
+		type: "Expense",
+		category: "Groceries",
+		date: "2011-10-10",
+		id: "2",
+	};
+
+	wallet.createTransaction(transaction);
+	wallet.createTransaction(transaction2);
+	expect(wallet.getAmountByTransactionCategoryName("Groceries")).toBe(200);
+});
