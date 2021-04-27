@@ -1,8 +1,6 @@
 import styled, { css } from "styled-components";
-import { ThemeType } from "../../Theme/Theme";
-import Wallet from "../../Transaction/Wallet";
 
-const StyledHeader = styled.header<{ theme: ThemeType; isCurrent: boolean }>`
+export const StyledHeader = styled.header<{ isCurrent: boolean }>`
 	width: 100%;
 	height: ${(props) => props.theme.height.header};
 
@@ -23,37 +21,52 @@ const StyledHeader = styled.header<{ theme: ThemeType; isCurrent: boolean }>`
 		`};
 `;
 
-const HeaderBalanceWrapper = styled.div<{ theme: ThemeType }>`
+export const HeaderBalanceWrapper = styled.div`
 	height: ${(props) => props.theme.height.footer};
-	margin: 0 auto 0 auto;
+	margin: 0.2rem auto 0 auto;
+	padding: 0 2rem 0 2rem;
 	max-width: 430px;
 
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
+	display: flex;
+	justify-content: space-between;
 
-	justify-items: center;
-	align-items: center;
+	.header_icon {
+		&:hover {
+			color: ${(props) => props.theme.colors.text.special};
+		}
+	}
 `;
 
-const Menu = styled.div``;
+export const Menu = styled.div`
+	margin-top: 0.3rem;
+	width: 1rem;
+	height: 1rem;
 
-const BalanceInfo = styled.div``;
+	cursor: pointer;
+`;
 
-const UtilityButton = styled.div``;
+export const Sync = styled.div`
+	margin-top: 0.3rem;
+	width: 1rem;
+	height: 1rem;
 
-const Header = ({ wallet, isCurrent }: { wallet: Wallet; isCurrent: boolean }) => {
-	return (
-		<StyledHeader isCurrent={isCurrent}>
-			<HeaderBalanceWrapper className="header-wrapper">
-				<Menu className="header-wrapper_menu">Menu</Menu>
-				<BalanceInfo className="header-wrapper_balance-info">
-					{wallet.balanceSum.toString()[0] === "-" ? "- " : "+ "}
-					{wallet.balanceSum.toString().replace("-", "")}$
-				</BalanceInfo>
-				<UtilityButton className="header-wrapper_utility-button">Button</UtilityButton>
-			</HeaderBalanceWrapper>
-		</StyledHeader>
-	);
-};
+	cursor: pointer;
+`;
 
-export default Header;
+export const BalanceInfo = styled.div`
+	text-align: center;
+`;
+
+export const AccountName = styled.p`
+	font-size: 0.7rem;
+	margin-bottom: 0.1rem;
+	margin-left: 0.3rem;
+
+	&::after {
+		margin-left: 0.3rem;
+		content: "▼";
+	}
+`;
+export const BalanceAmmount = styled.p`
+	font-size: 1rem;
+`;
