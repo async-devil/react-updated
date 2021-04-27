@@ -9,6 +9,9 @@ export const TransactionItemDate = styled.time<{ theme: ThemeType }>`
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 
+	box-shadow: 0 0.7px 1.1px -5px rgba(0, 0, 0, 0.045), 0 2.2px 3.6px -5px rgba(0, 0, 0, 0.076),
+		0 10px 16px -5px rgba(0, 0, 0, 0.14);
+
 	text-align: start;
 	padding: 0.25rem 0.5rem;
 `;
