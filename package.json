@@ -14,6 +14,7 @@
     "react-input-autosize": "^3.0.0",
     "react-scripts": "4.0.3",
     "styled-components": "^5.2.3",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.1.1"
   },
   "devDependencies": {
@@ -24,6 +25,7 @@
     "@types/react-dom": "^17.0.3",
     "@types/react-input-autosize": "^2.2.0",
     "@types/styled-components": "^5.1.9",
+    "@types/uuid": "^8.3.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "prettier": "^2.2.1",
@@ -48,6 +50,24 @@
       "jsx-quotes": [
         1,
         "prefer-double"
+      ],"import/order": [
+        "error",
+        {
+          "groups": [ "builtin", "external", "internal", ["parent", "sibling"] ],
+          "pathGroups": [
+            {
+              "pattern": "react",
+              "group": "external",
+              "position": "before"
+            }
+          ],
+          "pathGroupsExcludedImportTypes": ["react"],
+          "newlines-between": "always",
+          "alphabetize": {
+            "order": "asc",
+            "caseInsensitive": true
+          }
+        }
       ]
     },
     "plugins": [
