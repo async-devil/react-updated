@@ -24,7 +24,7 @@ const TransactionDate = ({ date, sum }: { date: Date; sum: number }) => {
 				</DateWrapper>
 			</div>
 			<DateSum sum={sum}>
-				{sum >= 0 ? "+ " : "- "}
+				{sum > 0 ? "+ " : sum === 0 ? " " : "- "}
 				{sum.toString().replace("-", "")}$
 			</DateSum>
 		</TransactionItemDate>

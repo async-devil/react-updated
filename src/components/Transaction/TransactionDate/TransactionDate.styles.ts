@@ -52,7 +52,7 @@ export const DateSum = styled.div<{ theme: ThemeType; sum: number }>`
 			`;
 		}
 		if (props.sum > 0) {
-			css`
+			return css`
 				color: ${(props) => props.theme.colors.text.income};
 			`;
 		}

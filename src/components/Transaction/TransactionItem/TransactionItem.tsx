@@ -54,7 +54,11 @@ const TransactionItem = (props: {
 					income={props.transaction.details.type === "Income"}
 				>
 					<p>
-						{props.transaction.details.type === "Income" ? "+ " : "- "}
+						{props.transaction.details.type === "Income" && props.transaction.details.amount !== 0
+							? "+ "
+							: props.transaction.details.amount === 0
+							? " "
+							: "- "}
 						{props.transaction.details.amount}$
 					</p>
 				</TransactionAmmount>
