@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+
 import { ThemeType } from "../../../Theme/Theme";
 
 export const TransactionItemDate = styled.time<{ theme: ThemeType }>`
@@ -40,15 +41,22 @@ export const DateValue = styled.span<{ textDay?: boolean; theme: ThemeType }>`
 		`}
 `;
 
-export const DateSum = styled.div<{ theme: ThemeType; isPositive: boolean }>`
+export const DateSum = styled.div<{ theme: ThemeType; sum: number }>`
 	color: ${(props) => props.theme.colors.text.expense};
 	font-size: ${(props) => props.theme.fontSizes.preLarge};
 
-	${(props) =>
-		props.isPositive &&
-		css`
-			color: ${(props) => props.theme.colors.text.income};
-		`}
+	${(props) => {
+		if (props.sum === 0) {
+			return css`
+				color: ${(props) => props.theme.colors.text.secondary};
+			`;
+		}
+		if (props.sum > 0) {
+			css`
+				color: ${(props) => props.theme.colors.text.income};
+			`;
+		}
+	}}
 
 	display: inline-flex;
 	align-items: center;

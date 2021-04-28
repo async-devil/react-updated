@@ -1,4 +1,3 @@
-import currency from "currency.js";
 import {
 	TransactionItemDate,
 	DayNumber,
@@ -24,9 +23,9 @@ const TransactionDate = ({ date, sum }: { date: Date; sum: number }) => {
 					<DateValue className="transaction-item_date_text-month-and-year">{`${month} ${year}`}</DateValue>
 				</DateWrapper>
 			</div>
-			<DateSum isPositive={sum >= 0}>
-				{currency(sum).value.toString()[0] === "-" ? "- " : "+ "}
-				{currency(sum).value.toString().replace("-", "")}$
+			<DateSum sum={sum}>
+				{sum >= 0 ? "+ " : "- "}
+				{sum.toString().replace("-", "")}$
 			</DateSum>
 		</TransactionItemDate>
 	);

@@ -1,4 +1,4 @@
-import Transaction from "../../../Transaction/Transaction";
+import Transaction, { TransactionDetails } from "../../../Transaction/Transaction";
 import TransactionController from "../TransactionController/TransactionController";
 import {
 	TransactionItemArticle,
@@ -19,9 +19,7 @@ const TransactionItem = (props: {
 		};
 		open: (id: string) => void;
 		close: () => void;
-		changeTitleHandler: (eventValue: string, id: string) => void;
-		changeAmountHandler: (eventValue: string, id: string) => void;
-		changeDateHandler: (eventValue: Date, id: string) => void;
+		save: (transaction: TransactionDetails) => void;
 	};
 }) => {
 	return (
@@ -52,10 +50,11 @@ const TransactionItem = (props: {
 				</TransactionInfo>
 				<TransactionAmmount
 					className="transaction-item__description_details"
+					amount={props.transaction.details.amount}
 					income={props.transaction.details.type === "Income"}
 				>
 					<p>
-						{props.transaction.details.type === "Income" ? "+ " : "- "}
+						{props.transaction.details.amount >= 0 ? "+ " : "- "}
 						{props.transaction.details.amount}$
 					</p>
 				</TransactionAmmount>
@@ -66,9 +65,7 @@ const TransactionItem = (props: {
 						transaction={props.transaction}
 						close={props.transactionController.close}
 						deleteTransaction={props.deleteTransaction}
-						changeTitleHandler={props.transactionController.changeTitleHandler}
-						changeAmountHandler={props.transactionController.changeAmountHandler}
-						changeDateHandler={props.transactionController.changeDateHandler}
+						saveTransaction={props.transactionController.save}
 					/>
 				)}
 		</TransactionItemArticle>

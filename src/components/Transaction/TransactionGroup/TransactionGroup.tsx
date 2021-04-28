@@ -1,8 +1,9 @@
-import Transaction from "../../../Transaction/Transaction";
-import TransactionDate from "../TransactionDate/TransactionDate";
-import TransactionItem from "../TransactionItem/TransactionItem";
 import currency from "currency.js";
 import styled from "styled-components";
+
+import Transaction, { TransactionDetails } from "../../../Transaction/Transaction";
+import TransactionDate from "../TransactionDate/TransactionDate";
+import TransactionItem from "../TransactionItem/TransactionItem";
 
 const TransactionGroupArticle = styled.article`
 	min-width: 17.5rem;
@@ -29,9 +30,7 @@ const TransactionGroup = (props: {
 		};
 		open: (id: string) => void;
 		close: () => void;
-		changeTitleHandler: (eventValue: string, id: string) => void;
-		changeAmountHandler: (eventValue: string, id: string) => void;
-		changeDateHandler: (eventValue: Date, id: string) => void;
+		save: (transaction: TransactionDetails) => void;
 	};
 }) => {
 	let transactionsArray = null;

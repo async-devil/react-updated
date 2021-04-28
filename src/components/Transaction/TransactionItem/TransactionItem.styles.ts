@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+
 import { ThemeType } from "../../../Theme/Theme";
 
 export const TransactionItemArticle = styled.div<{ theme: ThemeType }>`
@@ -45,15 +46,22 @@ export const TransactionCategoryValue = styled.span<{ paymentMethod?: boolean; t
 		`}
 `;
 
-export const TransactionAmmount = styled.div<{ income?: boolean }>`
+export const TransactionAmmount = styled.div<{ amount: number; income?: boolean }>`
 	color: ${(props) => props.theme.colors.text.expense};
 	font-size: ${(props) => props.theme.fontSizes.preLarge};
 
-	${(props) =>
-		props.income &&
-		css`
-			color: ${(props) => props.theme.colors.text.income};
-		`}
+	${(props) => {
+		if (props.amount === 0) {
+			return css`
+				color: ${(props) => props.theme.colors.text.secondary};
+			`;
+		}
+		if (props.income) {
+			return css`
+				color: ${(props) => props.theme.colors.text.income};
+			`;
+		}
+	}}
 
 	display: flex;
 	align-items: center;
