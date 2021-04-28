@@ -1,7 +1,13 @@
-import React from "react";
-import Transaction from "../../../Transaction/Transaction";
-import AutosizeInput from "react-input-autosize";
+import React, { useState } from "react";
+
+import DeleteIcon from "@material-ui/icons/Delete";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import SaveIcon from "@material-ui/icons/Save";
+import currency from "currency.js";
 import DatePicker from "react-datepicker";
+import AutosizeInput from "react-input-autosize";
+
+import Transaction, { TransactionDetails } from "../../../Transaction/Transaction";
 import "react-datepicker/dist/react-datepicker.min.css";
 import FromOrTo from "./FromOrTo";
 import {
@@ -17,25 +23,16 @@ import {
 	Icon,
 	IconWrapper,
 } from "./TransactionController.styles";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import SaveIcon from "@material-ui/icons/Save";
-import DeleteIcon from "@material-ui/icons/Delete";
 
 const TransactionController = (props: {
 	transaction: Transaction;
-	close: () => any;
-	changeTitleHandler: (eventValue: string, id: string) => void;
-	changeAmountHandler: (eventValue: string, id: string) => void;
-	changeDateHandler: (eventValue: Date, id: string) => void;
+	close: () => void;
+	saveTransaction: (transaction: TransactionDetails) => void;
 	deleteTransaction: (id: string) => void;
 }) => {
-	const [titleHandlerValue, updateTitleHandlerValue] = React.useState(
-		props.transaction.details.title || ""
-	);
-	const [amountHandlerValue, updateAmountHandlerValue] = React.useState(
-		props.transaction.details.amount.toString()
-	);
-	const [dateHandlerValue, updateDateHandlerValue] = React.useState(props.transaction.details.date);
+	const [title, updateTitle] = useState(props.transaction.details.title);
+	const [amount, updateAmount] = useState(props.transaction.details.amount.toString());
+	const [date, updateDate] = useState(props.transaction.details.date);
 
 	return (
 		<Controller className="transaction-controller">
@@ -75,12 +72,12 @@ const TransactionController = (props: {
 							className="transaction-controller__wrapper__amount_input-wrapper_input"
 							type="text"
 							placeholder="0"
-							value={amountHandlerValue}
-							onChange={(event) =>
-								updateAmountHandlerValue(
+							value={amount}
+							onChange={(event) => {
+								updateAmount(
 									event.target.value.replace(/([^\d.])|((?<=\.\d{2}).)|((?<=\..*)\.)/gm, "")
-								)
-							}
+								);
+							}}
 						/>
 						<span className="transaction-controller__wrapper__amount_input-wrapper_dollar-sign">
 							$
@@ -92,23 +89,24 @@ const TransactionController = (props: {
 						className="transaction-controller__wrapper__title_input"
 						type="text"
 						placeholder={"Title..."}
-						value={titleHandlerValue}
+						value={title}
 						onChange={(event) => {
-							updateTitleHandlerValue(event.target.value);
+							updateTitle(event.target.value);
 						}}
 					/>
 				</TitleWrapper>
-				<DateWrapper>
+				<DateWrapper className="transaction-controller__wrapper__date">
 					<DatePicker
 						dateFormat="yyyy/MM/dd"
-						selected={dateHandlerValue}
-						onChange={(date: Date) => updateDateHandlerValue(date)}
-						onSelect={(date) => updateDateHandlerValue(date)}
+						selected={date}
+						onChange={(date: Date) => updateDate(date)}
+						onSelect={(date: Date) => updateDate(date)}
 					/>
 				</DateWrapper>
-				<ButtonsWrapper>
-					<IconWrapper>
+				<ButtonsWrapper className="transaction-controller__wrapper__buttons">
+					<IconWrapper className="transaction-controller__wrapper__button-wrapper delete-button">
 						<Icon
+							className="transaction-controller__wrapper__button"
 							type="delete"
 							onClick={() => {
 								props.deleteTransaction(props.transaction.details.id);
@@ -119,19 +117,28 @@ const TransactionController = (props: {
 						</Icon>
 						<p>Delete</p>
 					</IconWrapper>
-					<IconWrapper>
-						<Icon type="exit" onClick={props.close}>
+					<IconWrapper className="transaction-controller__wrapper__button-wrapper exit-button">
+						<Icon
+							className="transaction-controller__wrapper__button"
+							type="exit"
+							onClick={props.close}
+						>
 							<ExitToAppIcon />
 						</Icon>
 						<p>Exit</p>
 					</IconWrapper>
-					<IconWrapper>
+					<IconWrapper className="transaction-controller__wrapper__button-wrapper save-button">
 						<Icon
+							className="transaction-controller__wrapper__button"
 							type="save"
 							onClick={() => {
-								props.changeTitleHandler(titleHandlerValue, props.transaction.details.id);
-								props.changeAmountHandler(amountHandlerValue, props.transaction.details.id);
-								props.changeDateHandler(dateHandlerValue, props.transaction.details.id);
+								props.saveTransaction(
+									Object.assign(props.transaction.details, {
+										title,
+										date,
+										amount: currency(amount).value,
+									})
+								);
 								props.close();
 							}}
 						>

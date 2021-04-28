@@ -149,18 +149,24 @@ export const DateWrapper = styled.div`
 	.react-datepicker {
 		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 		font-size: 0.8rem;
+
 		background-color: ${(props) => props.theme.colors.background.menuHighlighted};
 		color: ${(props) => props.theme.colors.text.primary};
+
 		border: 1px solid ${(props) => props.theme.colors.background.paper};
-		box-shadow: 0 10px 25px -12px rgba(0, 0, 0, 0.25);
 		border-radius: 0;
+
+		box-shadow: 0 10px 25px -12px rgba(0, 0, 0, 0.25);
+
 		display: inline-block;
 		position: relative;
+		right: 5.5rem;
 	}
 
 	.react-datepicker__day {
 		background-color: ${(props) => props.theme.colors.background.paper};
 		color: ${(props) => props.theme.colors.text.primary};
+
 		border: 1px solid ${(props) => props.theme.colors.divider};
 		border-radius: 5px;
 
