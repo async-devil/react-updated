@@ -1,17 +1,19 @@
-import { Fragment, useState } from "react";
-import TransactionGroup from "./components/Transaction/TransactionGroup/TransactionGroup";
-import Wrapper from "./components/UI/TransactionsWrapper";
-import Footer from "./components/UI/Footer";
-import Wallet from "./Transaction/Wallet";
+import React, { Fragment, useState } from "react";
 
-import Theme from "./Theme/Theme";
-import darkTheme from "./Theme/darkTheme";
 import { createGlobalStyle } from "styled-components";
-import transactionsSort from "./Transaction/utils/transactionsSort";
-import Transaction from "./Transaction/Transaction";
+
+import TransactionAddController from "./components/Transaction/TransactionAddController/TransactionAddController";
+import TransactionGroup from "./components/Transaction/TransactionGroup/TransactionGroup";
+import AddButton from "./components/UI/AddButton/AddButton";
+import Footer from "./components/UI/Footer";
 import Header from "./components/UI/Header/Header";
+import Wrapper from "./components/UI/TransactionsWrapper";
+import darkTheme from "./Theme/darkTheme";
+import Theme from "./Theme/Theme";
+import Transaction, { TransactionDetails } from "./Transaction/Transaction";
+import transactionsSort from "./Transaction/utils/transactionsSort";
+import Wallet from "./Transaction/Wallet";
 import { transactionList } from "./transactions";
-import currency from "currency.js";
 
 enum Pages {
 	Accounts = 1,
@@ -39,38 +41,13 @@ const App = () => {
 		setTransactions(wallet.transactionsList);
 	};
 
-	const changeTitleHandler = (eventValue: string, id: string) => {
-		const transaction = wallet.getTransactionByID(id);
-
-		wallet.updateTransactionByID(
-			transaction.details.id,
-			Object.assign(transaction.details, { title: eventValue })
-		);
-
-		setTransactions(wallet.transactionsList);
-	};
-
-	const changeAmountHandler = (eventValue: string, id: string) => {
-		const transaction = wallet.getTransactionByID(id);
-
-		const amount = eventValue.replace(/([^\d.])|((?<=\.\d{2}).)|((?<=\..*)\.)/gm, "");
-
-		wallet.updateTransactionByID(
-			transaction.details.id,
-			Object.assign(transaction.details, { amount: currency(amount).value })
-		);
-
-		setTransactions(wallet.transactionsList);
-	};
-
-	const changeDateHandler = (eventValue: Date, id: string) => {
-		const transaction = wallet.getTransactionByID(id);
-
-		wallet.updateTransactionByID(
-			transaction.details.id,
-			Object.assign(transaction.details, { date: eventValue })
-		);
-
+	const saveTransaction = (transactionDetails: TransactionDetails) => {
+		try {
+			wallet.updateTransactionByID(transactionDetails.id, transactionDetails);
+		} catch (err) {
+			// If transaction not found
+			wallet.createTransaction(transactionDetails);
+		}
 		setTransactions(wallet.transactionsList);
 	};
 
@@ -122,14 +99,28 @@ const App = () => {
 										controllerState: transactionControllerState,
 										open: openController,
 										close: closeController,
-										changeTitleHandler,
-										changeAmountHandler,
-										changeDateHandler,
+										save: saveTransaction,
 									}}
 								></TransactionGroup>
 							);
 						})}
 					</Wrapper>
+					<AddButton
+						onClick={() => {
+							changeControllerState({ open: true, id: "-1" });
+							document.body.style.overflow = "hidden";
+						}}
+					/>
+					{transactionControllerState.open && transactionControllerState.id === "-1" && (
+						<TransactionAddController
+							close={() => {
+								changeControllerState({ open: false, id: "" });
+								document.body.style.overflow = "unset";
+							}}
+							wallet={wallet}
+							save={saveTransaction}
+						/>
+					)}
 				</main>
 				<Footer activePageIndex={Pages.Transactions}></Footer>
 			</Theme>
