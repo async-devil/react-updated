@@ -1,8 +1,8 @@
-import Category from "./Category";
-
-import CreditCardIcon from "@material-ui/icons/CreditCard";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
+import CreditCardIcon from "@material-ui/icons/CreditCard";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+
+import Category from "./Category";
 
 class PaymentMethod {
 	private UIInformation: Category;

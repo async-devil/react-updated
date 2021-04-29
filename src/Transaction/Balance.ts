@@ -1,4 +1,5 @@
 import currency from "currency.js";
+
 import PaymentMethod from "./Categories/PaymentMethod";
 
 class Balance {

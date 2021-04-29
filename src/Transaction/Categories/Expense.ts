@@ -1,13 +1,13 @@
-import Category from "./Category";
-
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
-import RestaurantIcon from "@material-ui/icons/Restaurant";
-import TheatersIcon from "@material-ui/icons/Theaters";
+import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
 import DirectionsBusIcon from "@material-ui/icons/DirectionsBus";
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
-import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import RestaurantIcon from "@material-ui/icons/Restaurant";
+import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import TheatersIcon from "@material-ui/icons/Theaters";
+
+import Category from "./Category";
 
 class Expense {
 	private UIInformation: Category;

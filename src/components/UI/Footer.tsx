@@ -1,8 +1,9 @@
-import styled, { css } from "styled-components";
+import BarChartIcon from "@material-ui/icons/BarChart";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import DataUsageIcon from "@material-ui/icons/DataUsage";
 import ReceiptIcon from "@material-ui/icons/Receipt";
-import BarChartIcon from "@material-ui/icons/BarChart";
+import styled, { css } from "styled-components";
+
 import { ThemeType } from "../../Theme/Theme";
 
 const StyledFooter = styled.footer<{ theme: ThemeType }>`

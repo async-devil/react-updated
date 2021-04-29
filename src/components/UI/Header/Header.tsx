@@ -1,5 +1,11 @@
 import React, { useState } from "react";
+
+import BackupIcon from "@material-ui/icons/Backup";
+import MenuIcon from "@material-ui/icons/Menu";
+
+import Balance from "../../../Transaction/Balance";
 import Wallet from "../../../Transaction/Wallet";
+import BalancesCard from "./BalancesCard/BalancesCard";
 import {
 	StyledHeader,
 	HeaderBalanceWrapper,
@@ -9,10 +15,6 @@ import {
 	AccountName,
 	BalanceAmmount,
 } from "./Header.styles";
-import BackupIcon from "@material-ui/icons/Backup";
-import MenuIcon from "@material-ui/icons/Menu";
-import Balance from "../../../Transaction/Balance";
-import BalancesCard from "./BalancesCard/BalancesCard";
 
 const Header = (props: { wallet: Wallet; isCurrent: boolean }) => {
 	const [selectedBalance, updateSelectedBalance] = useState<Balance | null>(null);

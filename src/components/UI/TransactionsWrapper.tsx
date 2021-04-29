@@ -1,5 +1,7 @@
-import styled from "styled-components";
 import { ReactNode } from "react";
+
+import styled from "styled-components";
+
 import { ThemeType } from "../../Theme/Theme";
 
 const StyledWrapper = styled.div<{ theme: ThemeType }>`

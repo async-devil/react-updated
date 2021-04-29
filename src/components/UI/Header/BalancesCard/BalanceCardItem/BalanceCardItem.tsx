@@ -1,6 +1,8 @@
 import React from "react";
-import Balance from "../../../../../Transaction/Balance";
+
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
+
+import Balance from "../../../../../Transaction/Balance";
 import {
 	BalanceAmount,
 	BalanceCardItemWrapper,

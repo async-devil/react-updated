@@ -1,7 +1,8 @@
+import currency from "currency.js";
+
 import Balance from "./Balance";
 import PaymentMethod, { PaymentMethods } from "./Categories/PaymentMethod";
 import Transaction, { TransactionDetails, TransactionDetailsUnparsed } from "./Transaction";
-import currency from "currency.js";
 
 class Wallet {
 	private transactions: Transaction[] = [];

@@ -1,7 +1,7 @@
-import Category from "./Category";
-
 import LocalAtmIcon from "@material-ui/icons/LocalAtm";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+
+import Category from "./Category";
 
 class Income {
 	private UIInformation: Category;
