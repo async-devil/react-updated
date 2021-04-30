@@ -30,7 +30,7 @@ enum IncomeName {
 	Salary = "Salary",
 }
 
-const Incomes: { [categoryName: string]: Category } = {
+const Incomes: { [categoryName: string]: Income } = {
 	Other: new Income(new Category(IncomeName.Other, MoreHorizIcon, "#969899")),
 	Salary: new Income(new Category(IncomeName.Salary, LocalAtmIcon, "#009885")),
 };
