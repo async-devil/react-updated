@@ -1,6 +1,7 @@
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import AirplanemodeActiveIcon from "@material-ui/icons/AirplanemodeActive";
 import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
+import CreditCardIcon from "@material-ui/icons/CreditCard";
 import DirectionsBusIcon from "@material-ui/icons/DirectionsBus";
 import FaceIcon from "@material-ui/icons/Face";
 import HomeIcon from "@material-ui/icons/Home";
@@ -23,11 +24,12 @@ export type IconsName =
 	| "Restaurant"
 	| "ShoppingBasket"
 	| "Movie"
-	| "ShopingBag"
+	| "ShoppingBag"
 	| "Hospital"
 	| "Bus"
-	| "Card"
+	| "Gift"
 	| "Cash"
+	| "Card"
 	| "Atm"
 	| "Education"
 	| "Family"
@@ -44,11 +46,12 @@ export const Icons: { [name in IconsName]: React.ElementType } = {
 	Restaurant: RestaurantIcon,
 	ShoppingBasket: ShoppingBasketIcon,
 	Movie: TheatersIcon,
-	ShopingBag: LocalMallIcon,
+	ShoppingBag: LocalMallIcon,
 	Hospital: LocalHospitalIcon,
 	Bus: DirectionsBusIcon,
-	Card: CardGiftcardIcon,
+	Gift: CardGiftcardIcon,
 	Cash: AccountBalanceWalletIcon,
+	Card: CreditCardIcon,
 	Atm: LocalAtmIcon,
 	Education: SchoolIcon,
 	Family: FaceIcon,
